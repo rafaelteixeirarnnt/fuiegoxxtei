@@ -1,6 +1,6 @@
 # Use a imagem oficial da OpenJDK 21
 FROM maven:3.9.6-amazoncorretto-21-al2023
-LABEL authors="Elaine, Luiz Guilherme, Rafael Teixeira"
+LABEL author="Rafael Teixeira"
 
 # Diretório de trabalho dentro do contêiner
 WORKDIR /app
