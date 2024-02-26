@@ -1,7 +1,7 @@
-package br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper;
+package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity.Usuario;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.controllers.dtos.request.CriacaoUsuarioRequest;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.request.CriacaoUsuarioRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

@@ -5,8 +5,8 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.C
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity.Usuario;
 
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.controllers.dtos.request.CriacaoUsuarioRequest;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.CriacaoUsuarioRequestMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.request.CriacaoUsuarioRequest;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.CriacaoUsuarioRequestMapper;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
