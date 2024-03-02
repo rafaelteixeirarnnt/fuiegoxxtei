@@ -7,7 +7,8 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.U
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.usuario.AlteracaoUsuarioRepositoryGateway;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.UsuarioEntityRepository;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.AlteracaoUsuarioRequestMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.usuarios.AlteracaoUsuarioRequestMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.usuarios.AlteracaoUsuarioResponseMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +16,10 @@ import org.springframework.context.annotation.Configuration;
 public class AlteracaoUsuarioConfig {
 
     @Bean
-    public AlteraUsuarioUseCase alteraUsuarioUseCase(AlteracaoUsuarioGateway gateway, AlteracaoUsuarioRequestMapper mapper) {
-        return new AlteraUsuarioUseCaseImpl(gateway, mapper);
+    public AlteraUsuarioUseCase alteraUsuarioUseCase(AlteracaoUsuarioGateway gateway,
+                                                     AlteracaoUsuarioRequestMapper mapper,
+                                                     AlteracaoUsuarioResponseMapper alteracaoUsuarioResponseMapper) {
+        return new AlteraUsuarioUseCaseImpl(gateway, mapper, alteracaoUsuarioResponseMapper);
     }
 
     @Bean

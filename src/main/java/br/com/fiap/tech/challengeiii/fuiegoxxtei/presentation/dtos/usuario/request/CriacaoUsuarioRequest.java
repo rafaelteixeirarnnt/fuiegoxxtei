@@ -1,4 +1,4 @@
-package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.request;
+package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.usuario.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

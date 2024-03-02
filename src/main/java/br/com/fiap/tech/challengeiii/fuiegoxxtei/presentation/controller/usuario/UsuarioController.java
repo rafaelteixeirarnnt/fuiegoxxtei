@@ -1,11 +1,12 @@
-package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation;
+package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.controller.usuario;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.AlteraUsuarioUseCase;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.CriaUsuarioUseCase;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.request.AlteracaoUsuarioRequest;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.request.CriacaoUsuarioRequest;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.response.CriacaoUsuarioResponse;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.CriacaoUsuarioResponseMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.usuario.request.AlteracaoUsuarioRequest;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.usuario.request.CriacaoUsuarioRequest;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.usuario.response.AlteracaoUsuarioResponse;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.usuario.response.CriacaoUsuarioResponse;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.usuarios.CriacaoUsuarioResponseMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -50,8 +51,7 @@ public class UsuarioController {
             @ApiResponse(responseCode = "200", description = "Usuário alterado com sucesso"),
             @ApiResponse(responseCode = "400", description = "Falha no cadastro de usuário"),
     })
-    public ResponseEntity<Void> alterar(@RequestBody @Valid AlteracaoUsuarioRequest request) {
-        this.alteraUsuarioUseCase.alterar(request);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<AlteracaoUsuarioResponse> alterar(@RequestBody @Valid AlteracaoUsuarioRequest request) {
+        return ResponseEntity.ok(this.alteraUsuarioUseCase.alterar(request));
     }
 }

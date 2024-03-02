@@ -20,4 +20,13 @@ public class ControleGlobalExceptionHandle {
         return new ResponseEntity<>(erro, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ApplicationException.class)
+    public ResponseEntity<ErrorResponse> handleException(ApplicationException e, HttpServletRequest request) {
+        var erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(),
+                e.getMessage(),
+                request.getRequestURI(),
+                LocalDateTime.now());
+        return new ResponseEntity<>(erro, HttpStatus.BAD_REQUEST);
+    }
+
 }
