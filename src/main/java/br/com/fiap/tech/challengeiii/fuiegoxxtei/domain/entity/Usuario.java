@@ -1,6 +1,5 @@
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity;
 
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.EnderecoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +20,6 @@ public class Usuario {
     private String email;
     private Boolean situacao;
 
-    private EnderecoEntity endereco;
+    private Endereco endereco;
 
 }

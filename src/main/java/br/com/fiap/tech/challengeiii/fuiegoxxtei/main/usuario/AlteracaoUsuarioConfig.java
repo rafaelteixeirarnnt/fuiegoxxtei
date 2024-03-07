@@ -3,7 +3,7 @@ package br.com.fiap.tech.challengeiii.fuiegoxxtei.main.usuario;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.gateways.usuario.AlteracaoUsuarioGateway;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.AlteraUsuarioUseCase;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.impl.AlteraUsuarioUseCaseImpl;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.UsuarioEntityMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.usuario.UsuarioEntityMapper;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.usuario.AlteracaoUsuarioRepositoryGateway;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.UsuarioEntityRepository;

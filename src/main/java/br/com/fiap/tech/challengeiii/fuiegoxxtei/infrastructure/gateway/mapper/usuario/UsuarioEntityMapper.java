@@ -1,4 +1,4 @@
-package br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper;
+package br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.usuario;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity.Usuario;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.UsuarioEntity;

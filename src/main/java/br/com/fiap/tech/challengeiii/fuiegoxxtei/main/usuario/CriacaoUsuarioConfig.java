@@ -6,7 +6,7 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.i
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.usuario.CriacaoUsuarioRepositoryGateway;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.usuarios.CriacaoUsuarioRequestMapper;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.UsuarioEntityMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.usuario.UsuarioEntityMapper;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.UsuarioEntityRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

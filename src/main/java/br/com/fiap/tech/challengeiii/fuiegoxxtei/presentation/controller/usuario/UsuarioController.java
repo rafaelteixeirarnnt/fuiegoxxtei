@@ -41,7 +41,7 @@ public class UsuarioController {
         var usuario = this.criaUsuarioUseCase.salvar(request);
         var location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(this.mapper.usuarioToCriacaoUsuarioResponse(usuario)).toUri();
+                .buildAndExpand(this.mapper.usuarioToCriacaoUsuarioResponse(usuario).id()).toUri();
         return ResponseEntity.created(location).build();
     }
 

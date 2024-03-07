@@ -1,5 +1,6 @@
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.controller.restaurante;
 
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.restaurantes.CriacaoRestauranteUseCase;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.CriacaoRestauranteResponse;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.CriacaoRestauranteRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "2 - Restaurantes", description = "Serviços disponíveis para gerenciamento de restaurantes.")
 public class RestauranteController {
 
+    private final CriacaoRestauranteUseCase criacaoRestauranteUseCase;
+
     @PostMapping
     @Operation(summary = "Serviço responsável por cadastrar restaurantes.")
     @ApiResponses(value = {
@@ -27,6 +30,7 @@ public class RestauranteController {
             @ApiResponse(responseCode = "400", description = "Falha no cadastro de restaurante"),
     })
     public ResponseEntity<CriacaoRestauranteResponse> salvar(@RequestBody @Valid CriacaoRestauranteRequest request) {
+        this.criacaoRestauranteUseCase.salvar(request);
         return ResponseEntity.ok().build();
     }
 

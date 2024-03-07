@@ -2,6 +2,7 @@ package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.usuario.requ
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -13,6 +14,7 @@ public record CriacaoUsuarioRequest(@CPF
                                     @Length(min = 2, max = 50)
                                     @NotNull
                                     String nome,
+                                    @Past
                                     @NotNull
                                     LocalDate dtNascimento,
                                     @NotNull
