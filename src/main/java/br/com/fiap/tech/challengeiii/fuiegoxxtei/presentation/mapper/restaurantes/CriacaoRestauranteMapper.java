@@ -10,7 +10,6 @@ public interface CriacaoRestauranteMapper {
 
     @Mapping(target = "nomeEstabelecimento", source = "nome")
     @Mapping(target = "cnpj", source = "cnpj")
-    @Mapping(target = "tipoCozinha", source = "tipoCozinha")
     @Mapping(target = "hrInicioAtendimento", source = "hrInicioAtendimento")
     @Mapping(target = "hrFimAtendimento", source = "hrFimAtendimento")
     @Mapping(target = "capacidade", source = "capacidade")

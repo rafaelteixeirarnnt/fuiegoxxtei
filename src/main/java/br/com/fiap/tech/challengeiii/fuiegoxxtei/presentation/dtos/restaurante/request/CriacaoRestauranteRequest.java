@@ -1,5 +1,6 @@
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request;
 
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.enums.TipoCozinhaEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -21,7 +22,8 @@ public record CriacaoRestauranteRequest(@NotNull
                                         @NotNull
                                         String nome,
                                         @NotNull
-                                        String tipoCozinha,
+                                        @Schema(name = "tipoCozinha", type = "string", description = "Tipos de cozinha que o sistema permite atualmente", example = "BRASILEIRA, ITALIANA, ARABE, JAPONESA, VEGETARIANA")
+                                        TipoCozinhaEnum tipoCozinhaEnum,
                                         @NotNull
                                         @JsonFormat(pattern = "HH:mm:ss")
                                         @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
@@ -42,12 +44,15 @@ public record CriacaoRestauranteRequest(@NotNull
                                         LocalTime hrFimAtendimento,
                                         Integer capacidade,
                                         @NotNull
+                                        @Schema(name = "telefone", description = "Telefone do usuário", type = "string", example = "11111111111 ou 1111111111")
                                         String telefone,
                                         @Email
                                         @NotNull
+                                        @Schema(name = "email", description = "Email do usuário", type = "string", example = "teste@teste.com")
                                         String email,
                                         @Length(min = 8, max = 8)
                                         @NotNull
+                                        @Schema(name = "cep", description = "Cep do usuário", type = "string", example = "48370000")
                                         String cep,
                                         @NotNull
                                         String logradouro,

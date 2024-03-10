@@ -1,4 +1,4 @@
-package br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.enums;
+package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.enums;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.exceptions.ApplicationException;
 import lombok.AllArgsConstructor;
