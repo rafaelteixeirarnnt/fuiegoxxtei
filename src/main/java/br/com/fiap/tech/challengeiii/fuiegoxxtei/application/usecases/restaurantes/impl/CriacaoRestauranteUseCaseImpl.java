@@ -17,12 +17,13 @@ public class CriacaoRestauranteUseCaseImpl implements CriacaoRestauranteUseCase 
     @Override
     public CriacaoRestauranteResponse salvar(CriacaoRestauranteRequest request) {
         var restaurante = this.mapper.criacaoRestauranteToRestaurante(request);
+        restaurante.setTipoCozinha(request.tipoCozinhaEnum().getDescricao());
 
         if (restaurante.getHrFimAtendimento().isBefore(restaurante.getHrInicioAtendimento())) {
             throw new ApplicationException("A hora de fechamento do estabelecimento não pode ser menor que a data de abertura");
         }
 
-        this.gateway.salvar(restaurante);
-        return null;
+        var restauranteDb = this.gateway.salvar(restaurante);
+        return new CriacaoRestauranteResponse(restauranteDb.getId());
     }
 }

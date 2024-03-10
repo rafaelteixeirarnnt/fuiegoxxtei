@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,8 +31,12 @@ public class RestauranteController {
             @ApiResponse(responseCode = "400", description = "Falha no cadastro de restaurante"),
     })
     public ResponseEntity<CriacaoRestauranteResponse> salvar(@RequestBody @Valid CriacaoRestauranteRequest request) {
-        this.criacaoRestauranteUseCase.salvar(request);
-        return ResponseEntity.ok().build();
+        CriacaoRestauranteResponse response = this.criacaoRestauranteUseCase.salvar(request);
+        var location = ServletUriComponentsBuilder.fromCurrentRequest()
+                                                  .path("/{id}")
+                                                  .buildAndExpand(response.id())
+                                                  .toUri();
+        return ResponseEntity.created(location).build();
     }
 
 }
