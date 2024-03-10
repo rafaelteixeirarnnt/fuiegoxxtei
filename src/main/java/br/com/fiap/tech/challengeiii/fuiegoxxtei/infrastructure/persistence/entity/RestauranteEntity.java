@@ -19,7 +19,7 @@ public class RestauranteEntity {
     private String id;
     private String cnpj;
     private String nomeEstabelecimento;
-    private String tipoCozinhaDescricao;
+    private String tipoCozinha;
     private LocalTime hrInicioAtendimento;
     private LocalTime hrFimAtendimento;
     private Integer capacidade;
