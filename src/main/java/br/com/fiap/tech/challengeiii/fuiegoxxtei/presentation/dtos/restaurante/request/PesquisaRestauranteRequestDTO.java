@@ -13,11 +13,11 @@ public class PesquisaRestauranteRequestDTO {
     @NotBlank
     private String nome;
 
-    @Schema(name = "tipoCozinha", type = "string", description = "Tipos de cozinha que o sistema permite atualmente", example = "[BRASILEIRA, ITALIANA, ARABE, JAPONESA, VEGETARIANA]")
+    @Schema(name = "tipoCozinha", type = "string", description = "Tipos de cozinha que o sistema permite atualmente", example = "BRASILEIRA ou ITALIANA ou ARABE ou JAPONESA ou VEGETARIANA")
     private TipoCozinhaEnum tipoCozinha;
 
-    @Length(min = 8, max = 8)
     @NotNull
+    @Length(min = 8, max = 8)
     @Schema(name = "cep", description = "Cep do restaurante", type = "string", example = "48370000")
     private String cep;
 

@@ -40,7 +40,6 @@ public class PesquisaRestauranteRepositoryGateway implements PesquisaRestaurante
 
         AggregationResults<RestauranteEntity> results = mongoTemplate.aggregate(aggregation, "db_restaurantes", RestauranteEntity.class);
         List<RestauranteEntity> mappedResults = results.getMappedResults();
-        mappedResults.size();
 
         return null;
     }
