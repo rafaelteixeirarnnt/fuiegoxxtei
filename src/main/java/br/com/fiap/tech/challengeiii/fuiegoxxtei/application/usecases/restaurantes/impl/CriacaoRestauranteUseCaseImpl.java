@@ -4,7 +4,7 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.gateways.restaurant
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.restaurantes.CriacaoRestauranteUseCase;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.exceptions.ApplicationException;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.CriacaoRestauranteRequestDTO;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.CriacaoRestauranteResponse;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.CriacaoRestauranteResponseDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.restaurantes.CriacaoRestauranteMapper;
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +15,7 @@ public class CriacaoRestauranteUseCaseImpl implements CriacaoRestauranteUseCase 
     private final CriacaoRestauranteMapper mapper;
 
     @Override
-    public CriacaoRestauranteResponse salvar(CriacaoRestauranteRequestDTO request) {
+    public CriacaoRestauranteResponseDTO salvar(CriacaoRestauranteRequestDTO request) {
         var restaurante = this.mapper.criacaoRestauranteToRestaurante(request);
         restaurante.setTipoCozinha(request.tipoCozinhaEnum().getDescricao());
 
@@ -24,6 +24,6 @@ public class CriacaoRestauranteUseCaseImpl implements CriacaoRestauranteUseCase 
         }
 
         var restauranteDb = this.gateway.salvar(restaurante);
-        return new CriacaoRestauranteResponse(restauranteDb.getId());
+        return new CriacaoRestauranteResponseDTO(restauranteDb.getId());
     }
 }

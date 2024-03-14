@@ -7,6 +7,7 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.r
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.restaurante.PesquisaRestauranteRepositoryGateway;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.RestauranteEntityRepository;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.restaurantes.PesquisaRestauranteMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -22,8 +23,8 @@ public class PesquisaRestauranteConfig {
     @Bean
     public PesquisaRestauranteGateway pesquisaRestauranteGateway(EnderecoEntityRepository enderecoEntityRepository,
                                                                  RestauranteEntityRepository repository,
-                                                                 RestauranteEntityMapper mapper, MongoTemplate mongoTemplate) {
-        return new PesquisaRestauranteRepositoryGateway(enderecoEntityRepository, repository, mapper, mongoTemplate);
+                                                                 RestauranteEntityMapper mapper, PesquisaRestauranteMapper pesquisaRestauranteMapper, MongoTemplate mongoTemplate) {
+        return new PesquisaRestauranteRepositoryGateway(enderecoEntityRepository, repository, mapper, pesquisaRestauranteMapper, mongoTemplate);
     }
 
 }
