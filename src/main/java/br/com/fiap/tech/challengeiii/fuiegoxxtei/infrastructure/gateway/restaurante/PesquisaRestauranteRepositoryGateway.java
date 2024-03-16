@@ -65,7 +65,13 @@ public class PesquisaRestauranteRepositoryGateway implements PesquisaRestaurante
         );
 
         var results = mongoTemplate.aggregate(aggregation, "db_restaurantes", Restaurante.class);
-        var restaurantes = results.getMappedResults().stream().map(pesquisaRestauranteMapper::restauranteToPesquisaRestauranteDTO).toList();
+        var restaurantes = results.getMappedResults().stream()
+                .map(restaurante -> {
+                    PesquisaRestauranteResponseDTO pesquisaRestauranteResponseDTO = this.pesquisaRestauranteMapper.restauranteToPesquisaRestauranteDTO(restaurante);
+                    pesquisaRestauranteResponseDTO.setTipoCozinha(TipoCozinhaEnum.obterPorDescricao(restaurante.getTipoCozinha()));
+                    return pesquisaRestauranteResponseDTO;
+                }).toList();
+
         return new PageImpl<>(restaurantes, PageRequest.of(pagina, tamanhoPagina), results.getMappedResults().size());
     }
 }

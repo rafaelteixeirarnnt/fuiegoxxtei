@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface PesquisaRestauranteMapper {
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "nome", source = "nomeEstabelecimento")
     @Mapping(target = "tipoCozinha", source = "tipoCozinha", ignore = true)
     @Mapping(target = "cep", source = "endereco.cep")

@@ -6,6 +6,7 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.r
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.PesquisaRestauranteRequestDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.CriacaoRestauranteResponseDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.PesquisaRestauranteResponseDTO;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.ReservaRestauranteResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -53,6 +54,21 @@ public class RestauranteController {
     })
     public Page<PesquisaRestauranteResponseDTO> pesquisar(PesquisaRestauranteRequestDTO request) {
         return this.pesquisaRestaurantesUseCase.pesquisar(request);
+    }
+
+    @PostMapping("/reservar")
+    @Operation(summary = "Serviço responsável por reservas")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Mesa cadastrada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Falha ao tentar reservar mesa"),
+    })
+    public ResponseEntity<ReservaRestauranteResponseDTO> reservar(@RequestBody @Valid CriacaoRestauranteRequestDTO request) {
+        CriacaoRestauranteResponseDTO response = this.criacaoRestauranteUseCase.salvar(request);
+        var location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(response.id())
+                .toUri();
+        return ResponseEntity.created(location).build();
     }
 
 }
