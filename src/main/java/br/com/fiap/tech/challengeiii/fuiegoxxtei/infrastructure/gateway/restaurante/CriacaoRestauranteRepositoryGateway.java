@@ -4,7 +4,7 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.gateways.restaurant
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity.Restaurante;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.exceptions.ApplicationException;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.restaurante.RestauranteEntityMapper;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.HorarioDisponiveisEntity;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.HorarioDisponivelEntity;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.RestauranteEntity;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.UsuarioEntity;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
@@ -52,12 +52,12 @@ public class CriacaoRestauranteRepositoryGateway implements CriacaoRestauranteGa
         return this.mapper.entityToRestaurante(restauranteDB);
     }
 
-    private List<HorarioDisponiveisEntity> montarHorariosDisponiveisNoRestaurante(RestauranteEntity restauranteDB) {
+    private List<HorarioDisponivelEntity> montarHorariosDisponiveisNoRestaurante(RestauranteEntity restauranteDB) {
         calcularDiferencaDeHoras(restauranteDB.getHrInicioAtendimento(), restauranteDB.getHrFimAtendimento());
-        List<HorarioDisponiveisEntity> horariosDisponiveis = new ArrayList<>();
+        List<HorarioDisponivelEntity> horariosDisponiveis = new ArrayList<>();
         for (int i = 0; i < calcularDiferencaDeHoras(restauranteDB.getHrInicioAtendimento(), restauranteDB.getHrFimAtendimento()); i++) {
             for (int j = 1; j <= restauranteDB.getCapacidade(); j++) {
-                var horarioDisponiveis = new HorarioDisponiveisEntity();
+                var horarioDisponiveis = new HorarioDisponivelEntity();
                 horarioDisponiveis.setMesa(String.format("Mesa %d", j));
                 horarioDisponiveis.setHorario(restauranteDB.getHrInicioAtendimento().plusMinutes(i * 30L));
                 horariosDisponiveis.add(horarioDisponiveis);

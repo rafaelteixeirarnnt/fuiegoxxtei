@@ -1,10 +1,13 @@
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.controller.restaurante;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.restaurantes.CriacaoRestauranteUseCase;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.restaurantes.PesquisaHorariosDisponiveisUseCase;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.restaurantes.PesquisaRestaurantesUseCase;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.CriacaoRestauranteRequestDTO;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.PesquisaHorariosDisponiveisRequestDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.PesquisaRestauranteRequestDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.CriacaoRestauranteResponseDTO;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.PesquisaHorariosDisponiveisResponseDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.PesquisaRestauranteResponseDTO;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.response.ReservaRestauranteResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/restaurantes")
@@ -30,6 +35,7 @@ public class RestauranteController {
 
     private final CriacaoRestauranteUseCase criacaoRestauranteUseCase;
     private final PesquisaRestaurantesUseCase pesquisaRestaurantesUseCase;
+    private final PesquisaHorariosDisponiveisUseCase pesquisaHorarioDisponiveisUseCase;
 
     @PostMapping
     @Operation(summary = "Serviço responsável por cadastrar restaurantes.")
@@ -54,6 +60,16 @@ public class RestauranteController {
     })
     public Page<PesquisaRestauranteResponseDTO> pesquisar(PesquisaRestauranteRequestDTO request) {
         return this.pesquisaRestaurantesUseCase.pesquisar(request);
+    }
+
+    @GetMapping("/horarios-disponiveis")
+    @Operation(summary = "Serviço responsável por recuperar os horários disponíveis do restaurante.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Dados recuperado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Falha ao obter os dados"),
+    })
+    public List<PesquisaHorariosDisponiveisResponseDTO> obterHorariosDisponiveis(PesquisaHorariosDisponiveisRequestDTO request) {
+        return this.pesquisaHorarioDisponiveisUseCase.obterHorariosDisponiveis(request);
     }
 
     @PostMapping("/reservar")
