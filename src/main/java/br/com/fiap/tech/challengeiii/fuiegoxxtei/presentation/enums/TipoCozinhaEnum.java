@@ -18,7 +18,7 @@ public enum TipoCozinhaEnum {
 
     private String descricao;
 
-    public TipoCozinhaEnum obterPorDescricao(String descricao) {
+    public static TipoCozinhaEnum obterPorDescricao(String descricao) {
         return Arrays.stream(TipoCozinhaEnum.values())
                 .filter(tipoCozinhaEnum -> tipoCozinhaEnum.getDescricao().equalsIgnoreCase(descricao))
                 .findFirst().orElseThrow(() -> new ApplicationException("Registro não localizado"));
