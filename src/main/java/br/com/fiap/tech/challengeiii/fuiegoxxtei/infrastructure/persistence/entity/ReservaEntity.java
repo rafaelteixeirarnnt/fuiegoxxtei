@@ -7,20 +7,28 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 
 @Data
-@Document(collection = "db_horarios_disponiveis")
 @NoArgsConstructor
 @AllArgsConstructor
-public class HorarioDisponiveisEntity {
+@Document(collection = "db_reservas")
+public class ReservaEntity {
 
     @Id
     private String id;
-    private String mesa;
-    private LocalTime horario;
+
+    @DBRef
+    private HorarioDisponivelEntity horarioDisponivel;
 
     @DBRef
     private RestauranteEntity restaurante;
+
+    @DBRef
+    private UsuarioEntity usuarioEntity;
+
+    private LocalDate data;
+
+    private String situacao;
 
 }
