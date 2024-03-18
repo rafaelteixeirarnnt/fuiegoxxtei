@@ -25,10 +25,17 @@ public class ReservaEntity {
     private RestauranteEntity restaurante;
 
     @DBRef
-    private UsuarioEntity usuarioEntity;
+    private UsuarioEntity usuario;
 
     private LocalDate data;
 
     private String situacao;
 
+    public ReservaEntity(HorarioDisponivelEntity horarioDisponivel, RestauranteEntity restaurante, UsuarioEntity usuario, LocalDate data, String situacao) {
+        this.horarioDisponivel = horarioDisponivel;
+        this.restaurante = restaurante;
+        this.usuario = usuario;
+        this.data = data;
+        this.situacao = situacao;
+    }
 }

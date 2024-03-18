@@ -4,11 +4,13 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.enti
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Repository
 public interface HorariosDisponiveisRepository extends MongoRepository<HorarioDisponivelEntity, String> {
 
-    List<HorarioDisponivelEntity> findByRestaurante_Id(String id);
+    List<HorarioDisponivelEntity> findByRestaurante_Id(String idRestaurante);
+    List<HorarioDisponivelEntity> findByRestaurante_IdAndHorario(String idRestaurante, LocalTime horario);
 
 }
