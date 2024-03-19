@@ -10,6 +10,6 @@ import java.util.List;
 public interface ReservaEntityRepository extends MongoRepository<ReservaEntity, String> {
 
     List<ReservaEntity> findByRestaurante_IdAndData(String idRestaurante, LocalDate data);
-    List<ReservaEntity> findByHorarioDisponivel_HorarioAndData(LocalTime horario, LocalDate data);
+    List<ReservaEntity> findByHorarioDisponivel_HorarioAndData(LocalTime horario, LocalDate data);;
 
 }

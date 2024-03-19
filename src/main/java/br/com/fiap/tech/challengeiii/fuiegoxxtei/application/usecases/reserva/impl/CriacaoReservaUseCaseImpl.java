@@ -15,7 +15,6 @@ public class CriacaoReservaUseCaseImpl implements CriacaoReservaUseCase {
     private final CriacaoReservaGateway criacaoReservaRepositoryGateway;
     @Override
     public CriacaoReservaResponseDTO salvar(CriacaoReservaRequestDTO request) {
-        Reserva reservaDb = this.criacaoReservaRepositoryGateway.salvar(this.mapper.criacaoRestauranteToRestaurante(request));
-        return new CriacaoReservaResponseDTO(reservaDb.getId());
+        return new CriacaoReservaResponseDTO(this.criacaoReservaRepositoryGateway.salvar(this.mapper.criacaoRestauranteToRestaurante(request)).getId());
     }
 }
