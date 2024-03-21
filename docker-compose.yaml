@@ -13,7 +13,7 @@ services:
     volumes:
       - ./data/db:/data/db
 
-  parquimetro:
+  fuiegoxxtei:
     build:
       context: .
       dockerfile: Dockerfile
