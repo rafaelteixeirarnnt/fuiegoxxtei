@@ -1,10 +1,10 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://rafaelteixeirarnnt:8299QQZnUjZvP3a3@fuiegoxxtei.w2tfekx.mongodb.net/?retryWrites=true&w=majority&appName=fuiegoxxtei
-      database: fuiegoxxtei
-      username: rafaelteixeirarnnt
-      password: 8299QQZnUjZvP3a3
+      uri: ${MONGO_URI}
+      database: ${MONGO_DATABASE}
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
 
 logging:
   level:
