@@ -6,6 +6,7 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.restaurant
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.restaurante.RestauranteEntityMapper;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.restaurante.CriacaoRestauranteRepositoryGateway;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.HorariosDisponiveisRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.RestauranteEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.UsuarioEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.restaurantes.CriacaoRestauranteMapper;
@@ -22,8 +23,10 @@ public class CriacaoRestauranteConfig {
 
     @Bean
     public CriacaoRestauranteGateway criacaoRestauranteGateway(UsuarioEntityRepository usuarioEntityRepository, EnderecoEntityRepository enderecoEntityRepository,
-                                                               RestauranteEntityRepository repository, RestauranteEntityMapper mapper) {
-        return new CriacaoRestauranteRepositoryGateway(usuarioEntityRepository, enderecoEntityRepository, repository, mapper);
+                                                               RestauranteEntityRepository repository, RestauranteEntityMapper mapper,
+                                                               HorariosDisponiveisRepository horariosDisponiveisRepository) {
+        return new CriacaoRestauranteRepositoryGateway(usuarioEntityRepository, enderecoEntityRepository, repository, mapper,
+                                                       horariosDisponiveisRepository);
     }
 
 }

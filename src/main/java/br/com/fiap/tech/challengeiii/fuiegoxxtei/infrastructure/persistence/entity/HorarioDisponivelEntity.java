@@ -10,23 +10,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalTime;
 
 @Data
-@Document(collection = "db_restaurantes")
+@Document(collection = "db_horarios_disponiveis")
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestauranteEntity {
+public class HorarioDisponivelEntity {
 
     @Id
     private String id;
-    private String cnpj;
-    private String nomeEstabelecimento;
-    private String tipoCozinha;
-    private LocalTime hrInicioAtendimento;
-    private LocalTime hrFimAtendimento;
-    private Integer capacidade;
+    private String mesa;
+    private LocalTime horario;
 
     @DBRef
-    private UsuarioEntity usuario;
+    private RestauranteEntity restaurante;
 
-    @DBRef
-    private EnderecoEntity endereco;
 }

@@ -1,7 +1,7 @@
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.mapper.restaurantes;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity.Restaurante;
-import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.CriacaoRestauranteRequest;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.dtos.restaurante.request.CriacaoRestauranteRequestDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -20,6 +20,6 @@ public interface CriacaoRestauranteMapper {
     @Mapping(target = "endereco.logradouro", source = "logradouro")
     @Mapping(target = "endereco.numero", source = "numero")
     @Mapping(target = "endereco.complemento", source = "complemento")
-    Restaurante criacaoRestauranteToRestaurante(CriacaoRestauranteRequest request);
+    Restaurante criacaoRestauranteToRestaurante(CriacaoRestauranteRequestDTO request);
 
 }

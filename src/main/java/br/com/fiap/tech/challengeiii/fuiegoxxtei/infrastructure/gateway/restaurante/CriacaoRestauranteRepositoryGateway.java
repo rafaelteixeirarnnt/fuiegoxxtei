@@ -4,11 +4,19 @@ import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.gateways.restaurant
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.entity.Restaurante;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.domain.exceptions.ApplicationException;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.gateway.mapper.restaurante.RestauranteEntityMapper;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.HorarioDisponivelEntity;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.RestauranteEntity;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity.UsuarioEntity;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.EnderecoEntityRepository;
+import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.HorariosDisponiveisRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.RestauranteEntityRepository;
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.repository.UsuarioEntityRepository;
 import lombok.RequiredArgsConstructor;
+
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 public class CriacaoRestauranteRepositoryGateway implements CriacaoRestauranteGateway {
@@ -17,6 +25,7 @@ public class CriacaoRestauranteRepositoryGateway implements CriacaoRestauranteGa
     private final EnderecoEntityRepository enderecoEntityRepository;
     private final RestauranteEntityRepository repository;
     private final RestauranteEntityMapper mapper;
+    private final HorariosDisponiveisRepository horariosDisponiveisRepository;
 
     @Override
     public Restaurante salvar(Restaurante restaurante) {
@@ -34,7 +43,28 @@ public class CriacaoRestauranteRepositoryGateway implements CriacaoRestauranteGa
         entity.setEndereco(endereco);
         entity.setUsuario(usuario);
 
-        return this.mapper.entityToRestaurante(this.repository.save(entity));
+        var restauranteDB = this.repository.save(entity);
+
+        var horariosDisponiveis = montarHorariosDisponiveisNoRestaurante(restauranteDB);
+
+        horariosDisponiveisRepository.saveAll(horariosDisponiveis);
+
+        return this.mapper.entityToRestaurante(restauranteDB);
+    }
+
+    private List<HorarioDisponivelEntity> montarHorariosDisponiveisNoRestaurante(RestauranteEntity restauranteDB) {
+        calcularDiferencaDeHoras(restauranteDB.getHrInicioAtendimento(), restauranteDB.getHrFimAtendimento());
+        List<HorarioDisponivelEntity> horariosDisponiveis = new ArrayList<>();
+        for (int i = 0; i < calcularDiferencaDeHoras(restauranteDB.getHrInicioAtendimento(), restauranteDB.getHrFimAtendimento()); i++) {
+            for (int j = 1; j <= restauranteDB.getCapacidade(); j++) {
+                var horarioDisponiveis = new HorarioDisponivelEntity();
+                horarioDisponiveis.setMesa(String.format("Mesa %d", j));
+                horarioDisponiveis.setHorario(restauranteDB.getHrInicioAtendimento().plusMinutes(i * 30L));
+                horariosDisponiveis.add(horarioDisponiveis);
+                horarioDisponiveis.setRestaurante(restauranteDB);
+            }
+        }
+        return horariosDisponiveis;
     }
 
     private void validarSeUsuarioPodeSerResponsavelPorRestaurante(UsuarioEntity usuario) {
@@ -49,5 +79,16 @@ public class CriacaoRestauranteRepositoryGateway implements CriacaoRestauranteGa
         if (restauranteOptinal.isPresent()) {
             throw new ApplicationException("Restaurante já cadastrado");
         }
+    }
+
+
+    public int calcularDiferencaDeHoras(LocalTime inicio, LocalTime fim) {
+        long minutosTotais = ChronoUnit.MINUTES.between(inicio, fim);
+
+        if (fim.isBefore(inicio)) {
+            minutosTotais += 24 * 60;
+        }
+
+        return (int) minutosTotais / 60;
     }
 }
