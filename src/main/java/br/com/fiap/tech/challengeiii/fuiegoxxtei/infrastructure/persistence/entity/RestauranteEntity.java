@@ -1,6 +1,7 @@
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.infrastructure.persistence.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -13,6 +14,7 @@ import java.time.LocalTime;
 @Document(collection = "db_restaurantes")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class RestauranteEntity {
 
     @Id
@@ -23,6 +25,8 @@ public class RestauranteEntity {
     private LocalTime hrInicioAtendimento;
     private LocalTime hrFimAtendimento;
     private Integer capacidade;
+    private String email;
+    private String telefone;
 
     @DBRef
     private UsuarioEntity usuario;

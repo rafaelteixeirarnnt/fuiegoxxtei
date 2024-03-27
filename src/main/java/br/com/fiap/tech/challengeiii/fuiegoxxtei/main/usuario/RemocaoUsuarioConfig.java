@@ -20,9 +20,9 @@ public class RemocaoUsuarioConfig {
    }
 
    @Bean
-   public RemocaoUsuarioGateway usuarioGateway(UsuarioEntityRepository usuarioEntityRepository,
-                                               UsuarioEntityMapper mapper,
-                                               EnderecoEntityRepository enderecoEntityRepository){
+   public RemocaoUsuarioGateway usuarioRemoveGateway(UsuarioEntityRepository usuarioEntityRepository,
+                                                     UsuarioEntityMapper mapper,
+                                                     EnderecoEntityRepository enderecoEntityRepository){
       return new RemocaoUsuarioRepositoryGateway(usuarioEntityRepository, mapper, enderecoEntityRepository);
    }
 }

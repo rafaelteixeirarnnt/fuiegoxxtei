@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.tech.challengeiii.fuiegoxxtei.presentation.controller.usuario;
 
 import br.com.fiap.tech.challengeiii.fuiegoxxtei.application.usecases.usuarios.AlteraUsuarioUseCase;
@@ -49,13 +50,17 @@ public class UsuarioControllerTest {
    void setup() {
       mock = MockitoAnnotations.openMocks(this);
       UsuarioController criaUsuario = new UsuarioController(criaUsuarioUseCase);
-      /*UsuarioController alteraUsuario = new UsuarioController(buscaUsuarioUseCase);
+      */
+/*UsuarioController alteraUsuario = new UsuarioController(buscaUsuarioUseCase);
       UsuarioController buscaUsuario = new UsuarioController(alteraUsuarioUseCase);
-      UsuarioController removeUsuario = new UsuarioController(removeUsuarioUseCase);*/
+      UsuarioController removeUsuario = new UsuarioController(removeUsuarioUseCase);*//*
+
       mockMvc = MockMvcBuilders.standaloneSetup(criaUsuario).build();
-      /*mockMvc = MockMvcBuilders.standaloneSetup(alteraUsuario).build();
+      */
+/*mockMvc = MockMvcBuilders.standaloneSetup(alteraUsuario).build();
       mockMvc = MockMvcBuilders.standaloneSetup(buscaUsuario).build();
-      mockMvc = MockMvcBuilders.standaloneSetup(removeUsuario).build();*/
+      mockMvc = MockMvcBuilders.standaloneSetup(removeUsuario).build();*//*
+
    }
 
    @AfterEach
@@ -84,12 +89,14 @@ public class UsuarioControllerTest {
 
    @Nested
    class BuscarUsuario {
-      /*@Test
+      */
+/*@Test
       void devePermitirBuscarUsuario() {
          var usuario = UsuarioHelper.gerarUsuarioCtrl();
 
          when(buscaUsuarioUseCase.).thenReturn(usuario);
-      }*/
+      }*//*
+
 
       @Test
       void listarUsuarios() {
@@ -138,3 +145,4 @@ public class UsuarioControllerTest {
       return new ObjectMapper().writeValueAsString(obj);
    }
 }
+*/

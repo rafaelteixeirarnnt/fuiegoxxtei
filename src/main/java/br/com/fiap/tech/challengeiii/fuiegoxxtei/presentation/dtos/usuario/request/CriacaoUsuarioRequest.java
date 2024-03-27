@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
-@RequiredArgsConstructor
+
 @Builder
 public record CriacaoUsuarioRequest(@CPF
                                     @NotNull

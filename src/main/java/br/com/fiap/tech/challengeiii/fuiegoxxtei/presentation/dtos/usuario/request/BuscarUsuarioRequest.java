@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Builder
 public record BuscarUsuarioRequest(@NotNull String id) {
 }
